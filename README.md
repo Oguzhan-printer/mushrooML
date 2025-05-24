@@ -146,9 +146,10 @@ jupyter notebook mushroom_classification_project.ipynb
 
 Oğuzhan Yazıcı
 - GitHub: Oguzhan-printer
+- Email: oguzhanyzcc3429@gmail.com
 - LinkedIn: https://www.linkedin.com/in/o%C4%9Fuzhan-yaz%C4%B1c%C4%B1-2b09aa327/
 - Kaggle Proje Linki: https://www.kaggle.com/code/ouzhanyazc/mushroom-project
-- Email: oguzhanyzcc3429@gmail.com
+
 
 
 ## 🙏 Teşekkürler
