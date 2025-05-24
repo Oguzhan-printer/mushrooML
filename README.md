@@ -61,11 +61,17 @@ Mantarlar söz konusu olduğunda, yenilebilirliği belirlemek için basit bir ku
 ### Model Performansları
 \`\`\`
 Model Karşılaştırması (Test Seti Üzerinde):
+
 ├── Random Forest: 100.00% Accuracy
-├── Decision Tree: 100.00% Accuracy  
+
+├── Decision Tree: 100.00% Accuracy 
+
 ├── Logistic Regression: 95.12% Accuracy
+
 ├── Ridge Classifier: 94.89% Accuracy
+
 ├── Neural Network: 99.88% Accuracy
+
 └── Naive Bayes: 92.34% Accuracy
 \`\`\`
 
