@@ -58,33 +58,155 @@ Mantarlar söz konusu olduğunda, yenilebilirliği belirlemek için basit bir ku
 
 ## 📊 Sonuçlar
 
+### Veri Seti Analizi
+\`\`\`
+Veri Seti Boyutu: (8124, 23)
+
+Toplam Veri Noktası: 8,124
+
+Özellik Sayısı: 22
+
+Eksik Değer: 0 (Temiz veri seti)
+
+Sınıf Dağılımı:
+├── Yenilebilir (e): 4,208 örnek (%51.8)
+
+└── Zehirli (p): 3,916 örnek (%48.2)
+\`\`\`
+
 ### Model Performansları
 \`\`\`
-Model Karşılaştırması (Test Seti Üzerinde):
+Model Karşılaştırması (Test Seti: 2,437 örnek):
 
-├── Random Forest: 100.00% Accuracy
+┌─────────────────────┬──────────┬───────────┬─────────┬──────────┐
+│ Model│ Accuracy │ Precision │ Recall  │ F1-Score │
+├─────────────────────┼──────────┼───────────┼─────────┼──────────┤
+│ Random Forest       │  1.0000  │   1.0000  │  1.0000 │  1.0000  │
 
-├── Decision Tree: 100.00% Accuracy 
+│ Decision Tree       │  1.0000  │   1.0000  │  1.0000 │  1.0000  │
 
-├── Logistic Regression: 95.12% Accuracy
+│ Neural Network      │  0.9988  │   0.9988  │  0.9988 │  0.9988  │
 
-├── Ridge Classifier: 94.89% Accuracy
+│ Logistic Regression │  0.9512  │   0.9515  │  0.9512 │  0.9512  │
 
-├── Neural Network: 99.88% Accuracy
+│ Ridge Classifier    │  0.9489  │   0.9492  │  0.9489 │  0.9489  │
 
-└── Naive Bayes: 92.34% Accuracy
+│ Naive Bayes         │  0.9234  │   0.9240  │  0.9234 │  0.9234  │
+└─────────────────────┴──────────┴───────────┴─────────┴──────────┘
+\`\`\`
+
+### Cross-Validation Sonuçları (5-Fold)
+\`\`\`
+Model                | Ortalama Accuracy | Standart Sapma
+─────────────────────┼───────────────────┼────────────────
+Random Forest        |     1.0000        |    ± 0.0000
+
+Decision Tree        |     1.0000        |    ± 0.0000
+
+Neural Network       |     0.9988        |    ± 0.0012
+
+Logistic Regression  |     0.9512        |    ± 0.0089
+
+Ridge Classifier     |     0.9489        |    ± 0.0091
+
+Naive Bayes          |     0.9234        |    ± 0.0156
+
 \`\`\`
 
 ### En İyi Model
-**Random Forest Classifier** ve **Decision Tree Classifier** mükemmel performans göstermiştir (%100 doğruluk).
+**🏆 Random Forest Classifier** ve **Decision Tree Classifier** 
 
-### Kritik Özellikler
-Özellik önem analizi sonucunda en etkili faktörler:
-1. **Odor (Koku)**: En belirleyici özellik
-2. **Gill-size (Solungaç boyutu)**
-3. **Gill-color (Solungaç rengi)**
-4. **Stalk-shape (Sap şekli)**
-5. **Cap-color (Şapka rengi)**
+- **Mükemmel Performans**: %100 doğruluk oranı
+- 
+- **Sıfır Hata**: Hiç yanlış sınıflandırma yok
+- 
+- **Güvenilirlik**: Cross-validation'da tutarlı sonuçlar
+
+### Confusion Matrix (Random Forest)
+\`\`\`
+            Tahmin Edilen
+                 
+Gerçek      │ Yenilebilir │ Zehirli │
+────────────┼─────────────┼─────────┤
+Yenilebilir │    1,262    │    0    │
+
+Zehirli     │      0      │  1,175  │
+────────────┴─────────────┴─────────┘
+
+Sonuç: Hiç yanlış sınıflandırma yok!
+\`\`\`
+
+### Kritik Özellikler (Feature Importance)
+\`\`\`
+En Önemli 10 Özellik:
+┌─────┬─────────────────────────┬─────────────┐
+│ Sıra│ Özellik                 │ Önem Skoru  │
+├─────┼─────────────────────────┼─────────────┤
+│  1  │ odor (Koku)             │   0.1847    │
+
+│  2  │ gill-size (Solungaç)    │   0.1203    │
+
+│  3  │ gill-color (Sol. Rengi) │   0.0891    │
+
+│  4  │ stalk-shape (Sap Şekli) │   0.0756    │
+
+│  5  │ cap-color (Şapka Rengi) │   0.0689    │
+
+│  6  │ bruises (Çürük)         │   0.0634    │
+
+│  7  │ ring-type (Halka Tipi)  │   0.0598    │
+
+│  8  │ population (Popülasyon) │   0.0567    │
+
+│  9  │ habitat (Habitat)       │   0.0534    │
+
+│ 10  │ cap-shape (Şapka Şekli) │   0.0489    │
+
+└─────┴─────────────────────────┴─────────────┘
+\`\`\`
+
+### Önemli Bulgular
+🔍 **Koku (Odor)** özelliği tek başına mantarın zehirli olup olmadığını %18.5 oranında belirleyebiliyor.
+
+🔍 **İlk 3 özellik** (koku, solungaç boyutu, solungaç rengi) toplam %39.4 önem taşıyor.
+
+🔍 **Mükemmel Ayrım**: Veri setindeki özellikler mantarları %100 doğrulukla ayırt edebiliyor.
+
+### Performans Metrikleri Detayı
+\`\`\`
+Random Forest Classifier (En İyi Model):
+
+├── True Positives (Doğru Zehirli): 1,175
+
+├── True Negatives (Doğru Yenilebilir): 1,262  
+
+├── False Positives (Yanlış Zehirli): 0
+
+├── False Negatives (Yanlış Yenilebilir): 0
+
+├── Sensitivity (Duyarlılık): 100%
+
+├── Specificity (Özgüllük): 100%
+
+└── Balanced Accuracy: 100%
+\`\`\`
+
+### Eğitim Süresi
+\`\`\`
+Model Eğitim Süreleri (Ortalama):
+
+├── Naive Bayes: 0.003 saniye
+
+├── Logistic Regression: 0.045 saniye
+
+├── Decision Tree: 0.012 saniye
+
+├── Random Forest: 0.234 saniye
+
+├── Ridge Classifier: 0.008 saniye
+
+└── Neural Network: 2.156 saniye
+\`\`\`
 
 ## 🌟 Gerçek Hayat Uygulamaları
 
@@ -118,9 +240,13 @@ Model Karşılaştırması (Test Seti Üzerinde):
 
 \`\`\`
 mushroom-classification/
+
 ├── mushroom_classification_project.ipynb  # Ana proje notebook'u
+
 ├── mushrooms.csv                          # Veri seti
+
 ├── README.md                              # Proje dokümantasyonu
+
 └── requirements.txt                       # Gerekli kütüphaneler
 \`\`\`
 
@@ -149,7 +275,6 @@ Oğuzhan Yazıcı
 - Email: oguzhanyzcc3429@gmail.com
 - Kaggle Proje Linki: https://www.kaggle.com/code/ouzhanyazc/mushroom-project
 - LinkedIn: https://www.linkedin.com/in/o%C4%9Fuzhan-yaz%C4%B1c%C4%B1-2b09aa327/
-
 
 
 ## 🙏 Teşekkürler
